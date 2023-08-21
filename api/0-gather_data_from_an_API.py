@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" This module make beginner level API calls to a dummy data service"""
 import requests
 import sys
 
@@ -23,13 +24,13 @@ if __name__ == '__main__':
     response = requests.get(api_url)
     user_todo_list = response.json()
 
-    # ----- Extract a list of completed tasks only from the above user-todo api call
+    # ----- Extract a list of completed tasks from user-todo api call
     completed_task_list = []
     for user_todo_dict in user_todo_list:
-        if user_todo_dict['completed'] == True:
+        if user_todo_dict['completed'] is True:
             completed_task_list.append(user_todo_dict['title'])
 
-   # ----- Make a second api call for data on the user only
+    # ----- Make a second api call for data on the user only
     api_url = base_url + s + users + s + employee_id
     response = requests.get(api_url)
     user_dict = response.json()
