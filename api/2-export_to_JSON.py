@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ This module make beginner level API calls to a dummy data service"""
-import csv
 import json
 import requests
 import sys
@@ -31,10 +30,8 @@ if __name__ == '__main__':
     response = requests.get(api_url)
     user_dict = response.json()
 
-    # ----- Create variables for csv creation
+    # Create a list of dictionaries of required data to write json file
     username = user_dict.get('username')
-
-    # Create a list of dictionaries of required data to send to csv writer
     list_keys = ["task", "completed", "username"]
     list_values = []
     formatted_data_dict = {}
@@ -48,6 +45,8 @@ if __name__ == '__main__':
         formatted_data_dict = dict(zip(list_keys, list_values))
         list_of_data_dictionaries.append(formatted_data_dict)
         list_values.clear()
+
+    # Create a dictionary in the required format
     new_dict = {str(employee_id): list_of_data_dictionaries}
 
     # ----- Create the json file
