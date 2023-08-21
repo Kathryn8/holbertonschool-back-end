@@ -27,8 +27,8 @@ if __name__ == '__main__':
     # ----- Extract a list of completed tasks from user-todo api call
     completed_task_list = []
     for user_todo_dict in user_todo_list:
-        if user_todo_dict['completed'] is True:
-            completed_task_list.append(user_todo_dict['title'])
+        if user_todo_dict.get('completed') is True:
+            completed_task_list.append(user_todo_dict.get('title'))
 
     # ----- Make a second api call for data on the user only
     api_url = base_url + s + users + s + employee_id
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     user_dict = response.json()
 
     # ----- Create variables for print display
-    employee_name = user_dict['name']
+    employee_name = user_dict.get('name')
     no_completed_tasks = len(completed_task_list)
     no_total_tasks = len(user_todo_list)
 
