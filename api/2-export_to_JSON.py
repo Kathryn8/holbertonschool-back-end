@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ This module make beginner level API calls to a dummy data service"""
 import csv
+import json
 import requests
 import sys
-import json
 
 if __name__ == '__main__':
 
